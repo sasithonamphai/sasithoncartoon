@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 
@@ -31,9 +32,6 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
-
-
     }// Main Method
 
     private void createListView() {
@@ -42,8 +40,8 @@ public class MainActivity extends AppCompatActivity {
         final int[] intIcon = {R.drawable.a, R.drawable.bn, R.drawable.d, R.drawable.eeyoretail,
                 R.drawable.f, R.drawable.gian, R.drawable.hu, R.drawable.k, R.drawable.kk,
                 R.drawable.main, R.drawable.minnie_mouse, R.drawable.stickerline, R.drawable.twiligh,
-                R.drawable.p, R.drawable.mk, R.drawable.naruto, R.drawable.eeyoretail, R.drawable.rttrt,
-                R.drawable.v,R.drawable.pic};
+                R.drawable.p, R.drawable.disney, R.drawable.naruto, R.drawable.rttrt, R.drawable.v,
+                R.drawable.w,R.drawable.pic};
 
         final String[] titStrings = new String[20];
         titStrings[0] = "เควิล";
@@ -60,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
         titStrings[11] = "โทนี โทนี่ ช๊อปเปอร์";
         titStrings[12] = "ทไวไลท์ สปาร์คเคิล";
         titStrings[13] = "โนบิตะ";
-        titStrings[14] = "ษษ์";
+        titStrings[14] = "พลูโต";
         titStrings[15] = "นารูโตะ";
         titStrings[16] = "Rava";
         titStrings[17] = "โดราเอมอน";
@@ -73,6 +71,27 @@ public class MainActivity extends AppCompatActivity {
         String[] detailStrings = getResources().getStringArray(R.array.detail_short);
         MyAdapter myAdapter = new MyAdapter(MainActivity.this, intIcon, titStrings, detailStrings);
         conanListView.setAdapter(myAdapter);
+        conanListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int i, long id) {
+                Intent intent = new Intent(MainActivity.this, Detai_Activity.class);
+                intent.putExtra("Title", titStrings[i]);
+                intent.putExtra("Image", intIcon[i]);
+                intent.putExtra("Index", i);
+
+                startActivity(intent);
+            }
+        });
+
+
+
+
+
+
+
+
+
+
 
     }
 
